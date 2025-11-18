@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subEncabezado" pageWidth="595" pageHeight="842" columnWidth="585" leftMargin="5" rightMargin="5" topMargin="0" bottomMargin="0" uuid="98bae596-8e5a-4602-bc73-19c08a489f08">
+	<property name="ireport.zoom" value="1.3310000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="IdLogoEdomex" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT * FROM ENCABEZADOS WHERE ID_ENCABEZADO = $P!{IdLogoEdomex}]]>
+	</queryString>
+	<field name="ID_ENCABEZADO" class="java.math.BigDecimal"/>
+	<field name="YEAR" class="java.math.BigDecimal"/>
+	<field name="LEYENDA" class="java.lang.String"/>
+	<field name="DESCRIPCION" class="java.lang.String"/>
+	<field name="LOGOTIPO" class="oracle.jdbc.OracleBlob"/>
+	<field name="INSTITUCION" class="oracle.jdbc.OracleBlob"/>
+	<field name="PIE" class="oracle.jdbc.OracleBlob"/>
+	<detail>
+		<band height="59" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="336" y="5" width="209" height="34" uuid="faa08721-1db2-4854-bead-2c925904c591"/>
+				<imageExpression><![CDATA[$F{INSTITUCION}.getBinaryStream()]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="0" y="39" width="585" height="20" forecolor="#666666" uuid="43b547f3-dbf4-4d09-a776-9ce94e96301f"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LEYENDA}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame">
+				<reportElement x="0" y="5" width="116" height="34" uuid="77717f1b-a420-44f0-af40-8947cd93b1b4"/>
+				<imageExpression><![CDATA[$F{LOGOTIPO}.getBinaryStream()]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>

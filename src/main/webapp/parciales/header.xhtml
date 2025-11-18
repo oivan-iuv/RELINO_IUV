@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <div class="logoHeader">
+        <div class="sidebar-toggle-box">
+            <i class="fa fa-bars"></i>
+        </div>
+        <!--logo inicio-->
+        <a href="#{request.contextPath}/index.xhtml" class="logo">RELINO<span></span></a>
+    </div>
+    <!--logo fin-->
+    <div class="top-nav ">
+        <ul class="nav pull-right top-menu fR ">
+            <!--login dropdown start-->
+            <li class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="#{request.contextPath}/resources/images/perfil.png" class="pull_left user-image" width="30px"/>
+                    <!--Mostramos el nombre del usuario que se encuentra activo-->
+                    <p:outputLabel class="d-inline-block text-truncate w-85" value="#{loginController.usuarioSession.nombreCompleto}">
+                        <br/>
+                        <span class="text-o">
+                            #{loginController.rol.idRolFk.rol}:&nbsp;#{usuarioController.usuarioSession.idUsuario}
+                        </span>
+                    </p:outputLabel>
+
+
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu extended logout dropdown-menu-right p-2" aria-labelledby="dropdownMenuLink">
+                    <h:form>
+                        <!--boton que redirecciona a la pagina inicial del aplicativo-->
+                        <div class="log-arrow-up"></div>                    
+                        <a href="../../java/mx/gob/ssedomex/sifet/facades/CatAccionNuevaFacade.java"></a>
+                        <li class="list-group-item">
+                            <p:commandButton id="btnHome" class="dropdown-item ui-button-secondary ui-button-flat p-0 btnlogin" value="INICIO" icon="fad fa-home" actionListener="#{loginController.home()}">
+
+                            </p:commandButton>
+                        </li>
+                        <p:tooltip for="btnHome" value="De clic para volver a la pagina inicial." showEffect="clip" hideEffect="explode" position="left"/>
+                        <!--boton que incializa el formulario para cambiar la cotraseña del usuario-->
+                        <div class="log-arrow-up"></div>                    
+                        <li class="list-group-item">
+                            <p:commandButton id="btnCambiaPass" class="dropdown-item ui-button-secondary ui-button-flat p-0 btnlogin" value="CAMBIAR CONTRASEÑA" icon="fad fa-lock-alt" actionListener="#{loginController.cambioPassMenu()}">
+                            </p:commandButton>
+                        </li>
+                        <p:tooltip for="btnCambiaPass" value="De clic para modificar su contraseña actual." showEffect="clip" hideEffect="explode" position="left"/>                   
+                        <!--boton para cerrar la sesion y salir del aplicativo-->
+                        <div class="log-arrow-up"></div>
+                        <li>
+                            <p:commandButton id="btnSalir" class="botonCerrarSesion" value="CERRAR SESIÓN" icon="fad fa-power-off" actionListener="#{loginController.logout()}">
+                                <p:spacer width="5px"/>
+                            </p:commandButton>
+                            <p:tooltip for="btnSalir" value="De clic para salir del sistema." showEffect="clip" hideEffect="explode" position="left"/>
+                        </li>
+                    </h:form>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</html>

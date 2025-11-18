@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+
+    <ul class="sidebar-menu" id="nav-accordion">
+        <li>           
+            <a href="#{request.getContextPath()}/inicio.xhtml">
+                <i class="fad fa-home"></i>
+                <span>PENDIENTES</span>
+            </a>            
+        </li>  
+
+        <li class="sub-menu">                            
+            <a  href="javascript:;">
+                <i class="fad fa-users"></i>
+                <span>ELEMENTOS ASPIRANTES</span>
+            </a>
+            <ul class="sub">
+                <li>
+                    <a  href="#{request.getContextPath()}/Aspirantes/nuevoAspirante.xhtml">
+                        REGISTRAR ASPIRANTE
+                    </a>
+                </li>
+                <li>
+                    <a  href="#{request.getContextPath()}/Aspirantes/consultas.xhtml">
+                        Consulta de elementos
+                    </a>
+                </li>
+            </ul>
+        </li> 
+
+        <li class="sub-menu">                            
+            <a  href="javascript:;">
+                <i class="fad fa-users"></i>
+                <span>ELEMENTOS NOMINALES</span>
+            </a>
+            <ul class="sub">
+                <li>
+                    <a  href="#{request.getContextPath()}/Nominales/nominales.xhtml">
+                        Tablero de Proceso de CUIP
+                    </a>
+                </li>
+                <li>
+                    <a  href="#{request.getContextPath()}/Nominales/consultas.xhtml">
+                        Consulta de elementos
+                    </a>
+                </li>
+            </ul>
+        </li> 
+    </ul>
+</html>

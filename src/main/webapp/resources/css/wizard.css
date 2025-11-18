@@ -1,0 +1,199 @@
+.custom-wizard .ui-wizard-step-titles {
+    position: relative;
+    z-index: 1;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+}
+
+.custom-wizard .ui-wizard-step-title {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Alinea el texto al centro */
+    font-size: 13px !important;
+    text-align: center;
+    margin-top: 80px; /* Ajusta este valor según sea necesario */
+    height: 64px; /* Ajusta este valor para que coincida con la altura de los círculos */
+    line-height: normal; /* Elimina el ajuste del line-height */
+}
+
+.custom-wizard .ui-wizard-step-titles .ui-wizard-step-title {
+    position: relative;
+    background: red;
+    align-items: center!important;
+    border: 1px solid #ecf1f4 !important;
+    background: #ecf1f4 !important;
+    border-radius: 50%!important;
+    color: #ccc!important;
+    margin-right: 3rem!important; /* Agregado margen entre círculos */
+    margin-left: 3rem!important; /* Agregado margen entre círculos */
+    height: 70px!important;
+    line-height: 6px!important;
+    width: 70px!important;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 14px!important;
+}
+
+.custom-wizard .ui-wizard-step-titles .ui-wizard-step-title:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 0px); /* Ajusta este valor según sea necesario */
+    transform: translateY(-50%);
+    border-bottom: 5px solid #ecf1f4;
+    width: calc(100% + 3rem); /* La línea se extiende por todo el ancho */
+    max-width: calc(100% + 3rem); /* Ajusta este valor según sea necesario */
+    z-index: -1; /* Asegura que la línea esté detrás de los pasos */
+}
+
+.custom-wizard .ui-wizard-step-titles .ui-state-highlight~.ui-wizard-step-title::before {
+    color: #787d83;
+    text-shadow: #adadad 0 0 0.2em;
+}
+
+body .ui-wizard .ui-wizard-step-titles .ui-wizard-step-title.ui-state-highlight {
+    border: 2px solid var(--primary-color) !important;
+    background: #ffffff !important;
+    color: var(--primary-color) !important;
+    font-weight: 600;
+    text-shadow: #d0a6af 0 0 0.2em;
+}
+
+/* Estilos para el icono con efecto duotono */
+.custom-wizard .ui-wizard-step-titles .ui-wizard-step-title::before {
+    font-family: "Font Awesome 5 Pro";
+    color: var(--success-color);
+    text-shadow: var(--box-shadow-success);
+}
+
+.custom-wizard .ui-wizard-step-title::before {
+    font-family: "Font Awesome 5 Duotone";
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    font-size: 30px !important;
+    border-radius: 50%;
+    content: attr(data-icon);
+    margin-top: 57px!important;
+    margin-bottom: 49px!important;
+    color: var(--primary-color-icon);
+    text-shadow: var(--secondary-color-icon) 0 0 0.2em;
+}
+
+/* Estilos específicos para el estado activo */
+.custom-wizard .ui-wizard-step-titles .ui-wizard-step-title.ui-state-highlight::before {
+    color: var(--primary-color) !important;
+    /* Cambia el color a primario */
+    text-shadow: #d0a6af 0 0 0.2em;
+    /* Cambia la sombra de texto al color predeterminado */
+}
+
+.custom-wizard .ui-wizard-step-title:nth-child(1)::before {
+    content: "\f82d";
+}
+
+.custom-wizard .ui-wizard-step-title:nth-child(2)::before {
+    content: "\f728";
+}
+
+.custom-wizard .ui-wizard-step-title:nth-child(3)::before {
+    content: "\f15c";
+}
+
+.custom-wizard .ui-wizard-step-title:nth-child(4)::before {
+    content: "\f828";
+}
+
+.custom-wizard .ui-wizard-step-title:nth-child(5)::before {
+    content: "\f121";
+}
+@media only screen and (max-width: 768px) {
+    .texto-oculto{
+        display: block!important;
+    }
+    .custom-wizard .ui-wizard-step-titles .ui-wizard-step-title {
+        margin-right: 0.4rem!important;
+        margin-left: 0.4rem!important;
+        height: 50px!important;
+        width: 50px!important;
+        font-size: 0px!important;
+    }
+
+    .custom-wizard .ui-wizard-step-titles .ui-wizard-step-title:not(:last-child)::after {
+        width: calc(32% + 3rem);
+
+    }
+
+    .custom-wizard .ui-wizard-step-title::before {
+        width: 30px;
+        height: 30px;
+        font-size: 25px !important;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .texto-oculto{
+        display: block!important;
+    }
+    .custom-wizard .ui-wizard-step-titles .ui-wizard-step-title {
+        margin-right: 0.4rem!important;
+        margin-left: 0.4rem!important;
+        height: 50px!important;
+        width: 50px!important;
+        font-size: 0px!important;
+    }
+
+    .custom-wizard .ui-wizard-step-titles .ui-wizard-step-title:not(:last-child)::after {
+        width: calc(32% + 3rem);
+
+    }
+
+    .custom-wizard .ui-wizard-step-title::before {
+        width: 30px;
+        height: 30px;
+        font-size: 25px !important;
+    }
+
+    .center-content {
+        justify-content: flex-start;
+    }
+
+    .mxw-95 {
+        min-width: 88% !important;
+    }
+
+
+}
+
+@media screen and (min-width: 320px) and (max-width: 320px) {
+    .custom-wizard .ui-wizard-step-titles .ui-wizard-step-title {
+        margin-right: 0.3rem!important;
+        margin-left: 0.3rem!important;
+        height: 45px!important;
+        width: 45px!important;
+        font-size: 0px!important;
+    }
+
+    .custom-wizard .ui-wizard-step-titles .ui-wizard-step-title:not(:last-child)::after {
+        width: calc(19% + 3rem);
+
+    }
+
+
+}
+
+.texto-oculto{
+    display: none;
+}
+
+
+
+
+

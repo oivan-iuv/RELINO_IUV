@@ -1,0 +1,423 @@
+/*:root {
+    --color-icon: #d6d1ca;
+    --color-primario-login: #977e5b;
+    --color-primario-login-btn-degradado: #66553d;
+    --color-form-background: linear-gradient(to right, rgb(184 143 86 / 45%), rgba(215, 194, 159, 0.45));
+    --color-button-background: linear-gradient(to right, var(--color-primario-login), var(--color-primario-login), var(--color-primario-login-btn-degradado));
+    --color-button-focus-shadow: hsl(347.55deg 62.35% 33.33% / 45%);
+    ;
+}*/
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-size: 13px;
+    color: #333333!important;
+}
+
+.fondo{
+    background-image:url('../../resources/images/login/fondo.svg') #dedede;
+    ;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #ffffff;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+/* Ajustes por veda electoral */
+.fondo_VE{
+    background-image:url('../../resources/images/loginVeda/fondo.svg') #dedede;
+    ;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #ffffff;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.form-signin{
+    background: var(--color-form-background)!important;
+    background-color: none!important;
+    border-radius: 10px;
+    max-width: 380px;
+    width: 100%;
+    padding: 58px 44px;
+    border: 0px solid #d1bfa5;
+    border-radius: 16px 16px 16px 16px;
+    box-shadow: 0 0.1rem 0.5rem #d6d1ca78, 0 0.25rem 1rem rgb(55 60 67 / 20%);
+    transition: all 0.3s ease;
+}
+
+.custom-input::placeholder {
+    color: #9b8d8d;
+}
+
+body .custom-input.ui-inputfield.ui-state-focus {
+    border-color: var(--color-primario-login)!important;
+    box-shadow: 0 0.1rem 0.5rem hsl(347.55deg 62.35% 33.33% / 45%), 0 0.25rem 1rem rgb(55 60 67 / 20%)!important;
+    outline: 0 none;
+}
+
+body .custom-input.ui-inputfield.ui-state-hover {
+    border-color: var(--color-primario-login)!important;
+}
+
+body .custom-input.ui-inputfield {
+    text-align: center;
+    width: 100%;
+    color: #5d5757;
+    background: #ffffff80;
+    padding: 0.5rem 0.5rem;
+    border: 1px solid #ced4da;
+    outline: 0 none;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid var(--color-primario-login);
+    font-size: 13px;
+    transition: border-bottom 0.3s ease-in-out;
+}
+
+body .ui-input-icon-left, body .ui-input-icon-right {
+    position: relative;
+    display: inline;
+}
+
+
+.custom-button:hover {
+    background: var(--color-primario-login);
+}
+
+body .custom-ui-button {
+    background: var(--color-button-background);
+    color: #ffffff;
+    padding: 4px 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px!important;
+    transition: background 0.3s ease;
+}
+
+body .custom-ui-button.ui-state-focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0.1rem 0.5rem var(--color-primario-login), 0 0.25rem 1rem rgb(55 60 67 / 20%);
+}
+
+body .custom-ui-button.ui-state-hover {
+    background: var(--color-button-background);
+    border-color: var(--color-primario-login);
+    color: #ffffff;
+}
+
+body .custom-ui-button.ui-state-active, body .custom-ui-button.ui-state-down {
+    background: var(--color-button-background);
+    border-color: var(--color-primario-login);
+    color: #ffffff;
+}
+
+.bg-light {
+    background-color: #ffffff80!important;
+}
+
+.wC-100{
+    width: calc(100% - 1px);
+}
+
+.text-icon{
+    color: var(--color-icon);
+}
+
+/* Dispositivos grandes (Monitores grandes 1920 px) */
+@media only screen and (max-width: 1920px) {
+    .fondo{
+        background-image: url('../../resources/images/login/fondo-large1920px.svg');
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    /* Ajustes por veda electoral */
+    .fondo_VE{
+        background-image: url('../../resources/images/loginVeda/fondo-large1920px.svg');
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+}
+
+/* Dispositivos grandes (pc, y laptops) */
+@media only screen and (max-width: 1280px) {
+    .fondo{
+        background: url('../../resources/images/login/fondo-md-1280px.svg');
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .fondo_VE{
+        background: url('../../resources/images/loginVeda/fondo-md-1280px.svg');
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+}
+
+/* Dispositivos medianos (tabletas horizontales, 768px y más) */
+@media only screen and (max-width: 768px){
+    .fondo{
+        background: url('../../resources/images/login/tablet.svg');
+        height:1024px;
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        min-height: 100vh;
+        background-size: cover;
+    }
+    /* Ajustes por veda electoral */
+    .fondo_VE{
+        background: url('../../resources/images/loginVeda/tablet.svg');
+        height:1024px;
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        min-height: 100vh;
+        background-size: cover;
+    }
+    .form-signin {
+        max-width: 335px;
+        margin-top: 20px;
+    }
+}
+
+/* Monitores medianos */
+@media only screen and (min-width: 780px) and (max-width: 1024px){
+    .fondo{
+        background: url('../../resources/images/login/fondo-md-1024px.svg');
+        height:1024px;
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    /* Ajustes por veda electoral */
+    .fondo_VE{
+        background: url('../../resources/images/loginVeda/fondo-md-1024px.svg');
+        height:1024px;
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+}
+
+@media only screen and (max-width: 411px) {
+    .fondo{
+        background: url('../../resources/images/login/fondo-small411px.svg');
+        height:1024px;
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        min-height: 100vh;
+        background-size: cover;
+    }
+    /* Ajustes por veda electoral */
+    .fondo_VE{
+        background: url('../../resources/images/loginVeda/fondo-small411px.svg');
+        height:1024px;
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        min-height: 100vh;
+        background-size: cover;
+    }
+}
+
+/* Dispositivos extra pequeños (teléfonos, 600px y menos) */
+@media only screen and (max-width: 540px) {
+    .fondo{
+        background: url('../../resources/images/login/fondo-small375px.svg');
+        height:720px;
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        min-height: 100vh;
+        background-size: cover;
+    }
+    /* Ajustes por veda electoral */
+    .fondo_VE{
+        background: url('../../resources/images/loginVeda/fondo-small375px.svg');
+        height:720px;
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        min-height: 100vh;
+        background-size: cover;
+    }
+}
+
+@media only screen and (max-width: 280px) {
+    .fondo{
+        background: url('../../resources/images/login/fondo-small280px.svg');
+        height:653px;
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        min-height: 100vh;
+        background-size: cover;
+    }
+    /* Ajustes por veda electoral */
+    .fondo_VE{
+        background: url('../../resources/images/loginVeda/fondo-small280px.svg');
+        height:653px;
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        min-height: 100vh;
+        background-size: cover;
+    }
+    .form-signin {
+        max-width: 255px;
+        margin-top: 20px;
+    }
+}
+
+/*Dispositivos grandes (Monitores grandes 1920 px) */
+@media only screen and (min-width: 1280px) and (max-width: 1280px){
+    .fondo{
+        background-image: url('../../resources/images/login/fondo-md-1280px.svg');
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .fondo_VE{
+        background-image: url('../../resources/images/loginVeda/fondo-md-1280px.svg');
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+}
+
+/* Dispositivos grandes (Monitores grandes 1920 px) */
+@media only screen and (min-width: 1024px) and (max-width: 1024px){
+    .fondo{
+        background-image: url('../../resources/images/login/fondo-md-1024px.svg');
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    /* Ajustes por veda electoral */
+    .fondo_VE{
+        background-image: url('../../resources/images/loginVeda/fondo-md-1024px.svg');
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+}
+
+body .ui-commandlink, body .ui-link {
+    color: #977e5b!important;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.textEtapa{
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+}
+
+.divEtapa{
+    color: #7d694b;
+    border-radius: 4px;
+    background: #977e5b5c;
+}
+
+body .ui-button.ui-button-secondary, body .ui-splitbutton.ui-button-secondary>.ui-button, body .ui-menubutton.ui-button-secondary>.ui-button {
+    background: #e4e6eb!important;
+    color: #050505!important;
+    border: 1px solid #e4e6eb!important;
+}
+
+.version {
+    font-weight: bold;
+    position: absolute;
+    bottom: 9px;
+}
+
+.text-info{
+    color: #3d67a15c!important;
+}
+
+
+.sinPadding .ui-panel-content {
+    border: 0px solid transparent!important;
+    background: transparent!important;
+    padding: 0rem!important;
+}
+
+.sinPadding .ui-panel .ui-panel-titlebar{
+    border: 1px solid transparent!important;
+    background: transparent!important;
+    padding: 1rem 0rem 1rem 0rem!important;
+}
+.sinPadding .ui-dialog-titlebar{
+    padding: 0rem!important;
+}
+.sinPadding .ui-dialog-content{
+    padding: 0rem!important;
+}
+.sinPadding .ui-dialog{
+    padding: 0rem!important;
+}
+
+.w-85 {
+    width: 90% !important;
+}
+
+.p-26{
+    padding: 26px !important;
+}
+
+.fw-600 {
+    font-weight: 600 !important;
+}
+
+.dlgSinpadding .ui-dialog-titlebar {
+    background: #fff;
+    color: var(--primary-color);
+    font-weight: 700;
+    border-bottom: 0 none;
+    padding: 0rem!important; 
+}
+
+.h2{
+    color: var(--primary-color); 
+    font-weight: 600;
+}
+
+.text-primary{
+    color: var(--primary-color)!important; 
+}

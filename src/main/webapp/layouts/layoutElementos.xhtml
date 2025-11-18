@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xml:lang="es_MX"
+      lang="es_MX">
+    <f:metadata>
+        <!--<f:event type="preRenderView" listener="# {loginController.confirmarSession()}"/>-->
+    </f:metadata>
+
+    <h:head>
+        <title>
+            <ui:insert name="Sistema de Registro de Listado Nominal (RELINO)"/>
+        </title>        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
+        <meta name="author" content="SECRETARÍA DE SEGURIDAD DEL ESTADO DE MÉXICO"/>
+        <!--ETIQUETAS META DE HTML FUNDAMENTALES PARA LA SEGURIDAD EN APLICACIONES BASADAS 
+        EN JAVA WEB CON EL USO DE FRAMEWORK JPA, EJB Y JSF QUE SE DESPACHAN POR LOS PUERTOS 
+        443 (HTTPS) Y 80 (HTTP) -->
+        <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+        <meta http-equiv="X-Frame-Options" content="DENY"/>
+        <meta http-equiv="X-XSS-Protection" content="1; mode=block"/>
+        <meta name="referrer" content="no-referrer"/>
+        <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains"/>
+        <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()"/>
+        <meta http-equiv="Feature-Policy" content="geolocation 'none'; microphone 'none'; camera 'none'"/>
+        <link rel="icon" type="image/png" href="#{request.contextPath}/resources/images/#{loginController.getLogo()}"/>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+        <!--Librería de Bootstrap-->
+        <h:outputStylesheet library="bootstrap" name="cssBootstrap/bootstrap.min.css"/>      
+        <h:outputStylesheet library="bootstrap" name="cssBootstrap/bootstrap-reset.css"/> 
+        <h:outputStylesheet library="bootstrap" name="cssBootstrap/slidebars.css"/> 
+        <h:outputStylesheet library="bootstrap" name="cssBootstrap/style-responsive.css"/> 
+        <h:outputStylesheet library="bootstrap" name="cssBootstrap/style.css"/> 
+        <!--Librería de Fontawesome-->
+        <link href="#{request.getContextPath()}/resources/font-awesome/css/all.css" rel="stylesheet" />
+        <!--Recursos del proyecto-->
+        <h:outputStylesheet library="css" name="primefaces.css"/> 
+        <style>#{ajustesController.cssPrimefaces}</style>
+        <h:outputStylesheet library="css" name="inventario.css"/> 
+        <h:outputStylesheet library="css" name="wizard.css"/> 
+        <!--<link href="resources/css/jsfcrud.css" rel="stylesheet" type="text/css"/>-->
+    </h:head>
+    <h:body class="light-sidebar-nav" >
+        <section id="container">
+            <header class="header bg-header">
+                <!--En el parcial se encuentra header-->  
+                <ui:include src="../parciales/header.xhtml" /> 
+            </header>
+
+            <aside>
+                <div id="sidebar"  class="nav-collapse ">
+                    <!-- En el parcial se encuentra menu  -->
+                    <ui:include src="../parciales/menu.xhtml" />
+                </div>
+            </aside>
+
+
+            <section id="main-content">
+                <section class="wrapper">
+                    <ui:insert name="workPage">
+                        <div class="d-grid gap-2 col-8 mx-auto">
+                            <div class="card text-center">
+                                <div class="card-header text-center">
+                                    <h3> BIENVENIDO AL SISTEMA DE REGISTRO DE <br/> RELINO</h3>
+                                </div>
+                                <div class="card-body">
+                                    
+                                </div>
+                            </div>   
+                        </div>
+                    </ui:insert>
+                    <!--fin contenido-->
+                </section>
+            </section>            
+        </section>
+
+        <p:dialog widgetVar="wdgLoading" modal="true" height="30" width="300" 
+                  draggable="false" closable="false" 
+                  resizable="false" showHeader="false" appendTo="@(body)">   
+            <p:progressBar id="progressBarIndeterminate"  style="height: 15px; margin-top: 10px;" mode="indeterminate"/>          
+        </p:dialog>
+        
+        <!--Scripts para la funcionalidad de la libreria de bootstrap -->
+        <h:outputScript library="bootstrap" name="jsBootstrap/bootstrap.bundle.min.js"/>
+        <h:outputScript library="bootstrap" name="jsBootstrap/jquery.dcjqaccordion.2.7.js"/>
+        <h:outputScript library="bootstrap" name="jsBootstrap/jquery.scrollTo.min.js"/>
+        <h:outputScript library="bootstrap" name="jsBootstrap/respond.min.js"/>
+        <h:outputScript library="bootstrap" name="jsBootstrap/slidebars.min.js"/>
+        <h:outputScript library="bootstrap" name="jsBootstrap/common-scripts.js"/>         
+        <!--Nota: Si se requiere implementar una funcionalidad propia del sistema, se debe crear un archivo .js para agregar dicha funcionalidad. 
+        Además, si es posible, se recomienda agregar un comentario en el archivo creado para indicar su propósito o función.-->
+        <!--Recursos js del proyecto-->
+        <h:outputScript library="js" name="jsfcrud.js"/>
+        <!--Recursos funcinalidades que se encontraban  en el archivo se inicializa el datePicker de primefaces -->
+        <h:outputScript library="js" name="datePicker.js"/>
+        
+
+    </h:body>
+</html>

@@ -1,0 +1,6 @@
+PrimeFaces.widget.ToggleSwitch = PrimeFaces.widget.BaseWidget.extend(
+        {init:function(a){this._super(a); 
+        this.slider = this.jq.children(".ui-toggleswitch-slider"); 
+        this.input = $(this.jqId + "_input"); 
+        if (!this.input.prop("disabled")){this._bindEvents()}}, _bindEvents:function(){var a = this; this.jq.on("click.toggleSwitch", function(b){a.toggle(); a.input.trigger("focus")}); this.input.on("focus.toggleSwitch", function(b){a.jq.addClass("ui-toggleswitch-focus")}).on("blur.toggleSwitch", function(b){a.jq.removeClass("ui-toggleswitch-focus")}).on("keydown.toggleSwitch", function(c){var b = $.ui.keyCode; if (c.which === b.SPACE){c.preventDefault()}}).on("keyup.toggleSwitch", function(c){var b = $.ui.keyCode; if (c.which === b.SPACE){a.toggle(); c.preventDefault()}})}, toggle:function(){if (this.input.prop("checked")){this.uncheck()} else{this.check()}}, check:function(){this.input.prop("checked", true).trigger("change"); this.jq.attr("aria-checked", true).addClass("ui-toggleswitch-checked")}, uncheck:function(){this.input.prop("checked", false).trigger("change"); this.jq.attr("aria-checked", false).removeClass("ui-toggleswitch-checked")}}
+        );

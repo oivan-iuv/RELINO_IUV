@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>
+            <ui:insert name="Sistema de Registro de Listado Nominal (RELINO)"/>
+        </title>        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
+        <meta name="author" content="SECRETARÍA DE SEGURIDAD DEL ESTADO DE MÉXICO"/>
+        <!--ETIQUETAS META DE HTML FUNDAMENTALES PARA LA SEGURIDAD EN APLICACIONES BASADAS 
+        EN JAVA WEB CON EL USO DE FRAMEWORK JPA, EJB Y JSF QUE SE DESPACHAN POR LOS PUERTOS 
+        443 (HTTPS) Y 80 (HTTP) -->
+        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://trusted.cdn.com"/>-->
+        <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+        <meta http-equiv="X-Frame-Options" content="DENY"/>
+        <meta http-equiv="X-XSS-Protection" content="1; mode=block"/>
+        <meta name="referrer" content="no-referrer"/>
+        <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains"/>
+        <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()"/>
+        <meta http-equiv="Feature-Policy" content="geolocation 'none'; microphone 'none'; camera 'none'"/>
+        <link rel="icon" type="image/png" href="#{request.contextPath}/resources/images/#{loginController.getLogo()}"/>
+        <!--Librería de Bootstrap-->
+        <h:outputStylesheet library="bootstrap" name="cssBootstrap/bootstrap.min.css"/> 
+        <!--Librería de Fontawesome-->
+        <link rel="stylesheet" href="#{request.contextPath}/resources/font-awesome/css/all.css"/>
+        <!--Recursos del proyecto-->
+        <link rel="stylesheet" href="#{request.contextPath}/resources/css/primefaces.css"/>
+        <style>#{ajustesController.cssPrimefaces}</style>
+        <link rel="stylesheet" href="#{request.contextPath}/resources/css/login.css"/>
+        <style>#{ajustesController.cssLogin}</style>
+    </h:head>
+    <h:body class="fondo">
+
+        <div class="fondoImage">
+
+            <div class="d-grid gap-2 col-lg-12 col-md-12  mx-auto vh-100 mt-30">
+                <div class="align-self-center">
+                    <div class="card form-signin">
+                        <div id="contentLogin" align="center">
+                            <h:form id="loginForm">
+                                <p:focus context="panelLogin"/>
+                                <p:growl widgetVar="wdvGrowl" id="idWgtVar" showDetail="true" showSummary="true" sticky="false"/>
+
+                                <div class="row">
+                                    <div class="d-grid gap-2 col-lg-12 col-md-12  mx-auto mb-4">
+                                        <p:graphicImage class="rounded mx-auto d-block" width="200" alt="Imagen del sistema"
+                                                        value="resources/images/logotipoRelino.png"/>                            
+                                    </div>
+                                    <p:panel  id="panelLogin" class="mt-3 sinPadding">                                       
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <h:outputLabel class="text-left" for="login_user" value="USUARIO:"/><br/>
+                                            <span class="ui-input-icon-left w-100">
+                                                <i class="fad  fa-user text-black-50" />
+                                                <p:inputText id="login_user" 
+                                                             class="custom-input wC-100"
+                                                             value="#{logginController.username}" 
+                                                             label="NOMBRE DE USUARIO" 
+                                                             onblur="this.value = this.value.toUpperCase()"
+                                                             onkeyup="this.value = this.value.toUpperCase();" 
+                                                             required="true" 
+                                                             requiredMessage="EL NOMBRE DE USUARIO ES REQUERIDO" 
+                                                             validatorMessage="VERIFIQUE EL USUARIO"
+                                                             maxlength="16" size="18"
+                                                             autocomplete="off" 
+                                                             placeholder="ESCRIBE AQUÍ…">
+                                                </p:inputText>
+                                            </span>
+                                            <p:message for="login_user" display="icon"/>
+                                            <p:watermark id="w1" for="login_user" value="ESCRIBA SU NOMBRE DE USUARIO"/>  
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <p:outputLabel value="CONTRASEÑA:"/><br/>                                    
+                                            <span class="ui-input-icon-left w-100">
+                                                <i class="fad fa-key text-black-50"/>
+                                                <p:password id="login_passwd"
+                                                            styleClass="custom-input wC-100"  
+                                                            value="#{logginController.password}"
+                                                            label="CONTRASEÑA"
+                                                            required="true" 
+                                                            requiredMessage="LA CONTRASEÑA ES REQUERIDA" 
+                                                            validatorMessage="VERIFIQUE LA CONTRASEÑA"  
+                                                            size="18" 
+                                                            toggleMask="true" 
+                                                            maxlength="15" 
+                                                            redisplay="true"
+                                                            autocomplete="off"
+                                                            placeholder="ESCRIBE AQUÍ…"/>
+                                            </span>
+                                            <p:message for="login_passwd" display="icon"/>
+                                            <p:watermark id="w2" for="login_passwd" value="ESCRIBA SU CONTRASEÑA" />
+                                        </div>
+                                        <div class="d-grid gap-2 mt-4">
+                                            <p:commandButton value="ACCEDER" 
+                                                             process="@form" 
+                                                             actionListener="#{logginController.nuevoLogin()}"
+                                                             update="loginForm,  idWgtVar"/>
+
+                                            <div id="formFooter">
+                                                <p:commandLink id="olvidoPass" value="OLVIDÉ MI CONTRASEÑA" 
+                                                               onclick="PF('recPassword').show();"  process="@this"/>
+                                                <p:tooltip for="olvidoPass" value="DA CLIC PARA RECUPERAR SU CONTRASEÑA" 
+                                                           showEffect="clip" hideEffect="clip" position="bottom" />
+                                            </div>
+                                        </div>
+                                    </p:panel>
+                                </div>
+                            </h:form>
+                        </div>          
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Parcial diálogo de recuperación de contraseña -->
+        <ui:include src="login/parcialesLogin/recuperarPassword.xhtml"/>
+        <!-- Parcial Diálogo de políticas para cambio de contraseña -->
+        <ui:include src="login/parcialesLogin/politicasCambioPassword.xhtml"/>
+
+        <p:dialog widgetVar="wdgLoading" modal="true" height="25" width="300" 
+                  draggable="false" closable="false" 
+                  resizable="false" showHeader="false" appendTo="@(body)">   
+            <p:progressBar id="progressBarIndeterminate"  style="height:20px" mode="indeterminate"/>          
+        </p:dialog>
+        <!--Scripts para la funcionalidad de la libreria de bootstrap -->
+        <h:outputScript library="bootstrap" name="jsBootstrap/bootstrap.bundle.min.js"/>
+        <script type="text/javascript">
+            function mostrarDialog(xhr, status, args) {
+                if (args.cambiarPass) {
+                    PF('dlgCambiaContrasenia').show();
+                }
+            }
+            function cerrarDialog(xhr, status, args) {
+                if (args.cerrarDlg) {
+                    PF('dlgCambiaContrasenia').hide();
+                }
+            }
+        </script>
+
+    </h:body>
+</html>

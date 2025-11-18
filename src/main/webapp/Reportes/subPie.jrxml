@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subEncabezado" language="groovy" pageWidth="595" pageHeight="842" columnWidth="585" leftMargin="5" rightMargin="5" topMargin="0" bottomMargin="0" uuid="98bae596-8e5a-4602-bc73-19c08a489f08">
+	<property name="ireport.zoom" value="1.6105100000000014"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="IdLogoEdomex" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT * FROM ENCABEZADOS WHERE ID_ENCABEZADO = $P!{IdLogoEdomex}]]>
+	</queryString>
+	<field name="ID_ENCABEZADO" class="java.math.BigDecimal"/>
+	<field name="YEAR" class="java.math.BigDecimal"/>
+	<field name="LEYENDA" class="java.lang.String"/>
+	<field name="DESCRIPCION" class="java.lang.String"/>
+	<field name="LOGOTIPO" class="oracle.jdbc.OracleBlob"/>
+	<field name="INSTITUCION" class="oracle.jdbc.OracleBlob"/>
+	<field name="PIE" class="oracle.jdbc.OracleBlob"/>
+	<pageFooter>
+		<band height="87">
+			<rectangle>
+				<reportElement x="120" y="42" width="465" height="44" backcolor="#CCCCCC" uuid="e606ab3d-76b0-4ffd-b853-a7559d02cddf"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="155" y="42" width="429" height="44" uuid="4fc1ad87-b995-445b-b4ae-3dd1f4b35de3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="8"/>
+				</textElement>
+				<text><![CDATA[Dirección General de Desarrollo Institucional e Innovación
+Boulevard Miguel Alemán Valdés Número 175, Colonia San Pedro Totoltepec, Toluca de Lerdo, Estado de México, C.P. 50226
+Teléfonos: (01 722) 275 82 00 Y 275 83 00; Extensiones: 12233 y 12184.
+]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="165" height="86" uuid="1480fa8e-bdd9-4668-afac-d73ecd300ce7"/>
+				<imageExpression><![CDATA[$F{PIE}.getBinaryStream()]]></imageExpression>
+			</image>
+		</band>
+	</pageFooter>
+</jasperReport>

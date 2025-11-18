@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEncabezadosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListEncabezadosEmpty}" rendered="#{encabezadosController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{encabezadosController.items.rowCount > 0}">
+                    <h:outputText value="#{encabezadosController.pagination.pageFirstItem + 1}..#{encabezadosController.pagination.pageLastItem + 1}/#{encabezadosController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{encabezadosController.previous}" value="#{bundle.Previous} #{encabezadosController.pagination.pageSize}" rendered="#{encabezadosController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{encabezadosController.next}" value="#{bundle.Next} #{encabezadosController.pagination.pageSize}" rendered="#{encabezadosController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{encabezadosController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEncabezadosTitle_idEncabezado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEncabezado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEncabezadosTitle_year}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.year}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEncabezadosTitle_leyenda}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.leyenda}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEncabezadosTitle_descripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEncabezadosTitle_logotipo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.logotipo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEncabezadosTitle_institución}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.institución}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEncabezadosTitle_pie}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pie}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{encabezadosController.prepareView}" value="#{bundle.ListEncabezadosViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{encabezadosController.prepareEdit}" value="#{bundle.ListEncabezadosEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{encabezadosController.destroy}" value="#{bundle.ListEncabezadosDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{encabezadosController.prepareCreate}" value="#{bundle.ListEncabezadosCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListEncabezadosIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="altaAspirantes_subReferencias" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="22e3a7ee-9f4e-4879-b5b5-28cfd6af8779">
+	<property name="ireport.zoom" value="1.331000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idAspirante" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT AR.ID_ASPIRANTE, R.APATERNO, R.AMATERNO, R.NOMBRE, GE.GENERO, R.OCUPACION, R.PARENTESCO, R.CALLE, R.NO_EXTERIOR, R.NO_INTERIOR,
+CCO.COLONIA_PAIS, R.ENTRE_CALLE, R.YLA_CALLE, R.TELEFONO, CEP.ESTADO_PAIS, CMP.MUNICIPIO_PAIS, R.CODIGO_POSTAL
+FROM REFERENCIAS R
+LEFT JOIN CAT_GENERO GE ON R.ID_SEXO=GE.ID_GENERO
+LEFT JOIN ASPIRANTES_REFERENCIAS AR ON AR.ID_REFERENCIA=R.ID_REFERENCIA
+LEFT JOIN CAT_COLONIAS_PAIS CCO ON R.ID_COLONIA=CCO.ID_COLONIA_PAIS
+LEFT JOIN CAT_ESTADOS_PAIS CEP ON R.ID_ENTIDAD=CEP.ID_ESTADO_PAIS
+LEFT JOIN CAT_MUNICIPIO_PAIS CMP ON CMP.ID_ESTADO_PAIS=CEP.ID_ESTADO_PAIS AND CMP.ID_MUNICIPIO_PAIS=R.ID_MUNICIPIO
+WHERE AR.ID_ASPIRANTE = $P!{idAspirante}]]>
+	</queryString>
+	<field name="ID_ASPIRANTE" class="java.math.BigDecimal"/>
+	<field name="APATERNO" class="java.lang.String"/>
+	<field name="AMATERNO" class="java.lang.String"/>
+	<field name="NOMBRE" class="java.lang.String"/>
+	<field name="GENERO" class="java.lang.String"/>
+	<field name="OCUPACION" class="java.lang.String"/>
+	<field name="PARENTESCO" class="java.lang.String"/>
+	<field name="CALLE" class="java.lang.String"/>
+	<field name="NO_EXTERIOR" class="java.lang.String"/>
+	<field name="NO_INTERIOR" class="java.lang.String"/>
+	<field name="COLONIA_PAIS" class="java.lang.String"/>
+	<field name="ENTRE_CALLE" class="java.lang.String"/>
+	<field name="YLA_CALLE" class="java.lang.String"/>
+	<field name="TELEFONO" class="java.lang.String"/>
+	<field name="ESTADO_PAIS" class="java.lang.String"/>
+	<field name="MUNICIPIO_PAIS" class="java.lang.String"/>
+	<field name="CODIGO_POSTAL" class="java.math.BigDecimal"/>
+	<detail>
+		<band height="316" splitType="Stretch">
+			<staticText>
+				<reportElement x="43" y="74" width="148" height="14" uuid="38bff40c-ee5a-4c56-9704-3bd4dfd8f6db"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[APELLIDO MATERNO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="191" y="74" width="251" height="14" uuid="3ff27532-5dd4-4e94-b7b4-6785d89a3628"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{AMATERNO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="43" y="60" width="148" height="14" uuid="bd7dfac5-5377-477e-9a78-9086741cf607"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[APELLIDO PATERNO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="191" y="60" width="251" height="14" uuid="c44959cd-adba-4331-a8c4-bab5bf72aad2"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{APATERNO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="43" y="88" width="148" height="14" uuid="08a500ff-78ce-4953-bca0-7c5a8aeba6b6"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="191" y="88" width="251" height="14" uuid="88f0b262-8db4-4d91-a379-ae94dc0a4cb5"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOMBRE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="43" y="102" width="148" height="14" uuid="3aebfcd8-f7ec-482b-a2fd-6192ebd9ed0b"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[SEXO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="191" y="102" width="251" height="14" uuid="f30d852f-9397-42e8-b57e-09c034ac9d94"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{GENERO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="43" y="116" width="148" height="14" uuid="9c1e9df4-fe89-4ab1-86a3-50dcf422102d"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[OCUPACION]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="191" y="116" width="251" height="14" uuid="ba5c7ba6-3d6b-4ab3-b058-66f07e6a2a8b"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{OCUPACION}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="43" y="164" width="148" height="14" uuid="efa63d0a-ed34-4536-aec8-ee32d9c18a16"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[CALLE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="191" y="164" width="251" height="14" uuid="49cc5c78-e560-4093-b112-656553491b91"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CALLE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="43" y="36" width="100" height="14" uuid="d157f513-cb52-4e57-883b-2bddfcd7ed90"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Datos Personales]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="43" y="140" width="100" height="14" uuid="bdefd66f-320c-48a8-aa10-4400ca790cd8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Domicilio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="43" y="178" width="148" height="14" uuid="2b8ad696-2b7a-4ef0-b154-de0d0cd16376"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[NO EXTERIOR]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="191" y="178" width="251" height="14" uuid="31b732cb-76f8-4fcb-b06c-c88f33d93f88"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NO_EXTERIOR}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="43" y="192" width="148" height="14" uuid="19a80e89-49c9-40d6-8229-606d55810416"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[NO INTERIOR]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="191" y="192" width="251" height="14" uuid="a97c04ce-4bdc-4880-b7c2-ecef4d773102"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NO_INTERIOR}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="43" y="206" width="148" height="14" uuid="8a45f210-45c2-4aa7-b814-10a30434ef69"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[COLONIA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="191" y="206" width="251" height="14" uuid="140254da-3777-4eca-a08c-8680a4cb5999"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLONIA_PAIS}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="43" y="220" width="148" height="14" uuid="e430aea1-4821-4115-a9ec-9aef2f4319cb"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[ENTRE LA CALLE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="191" y="220" width="251" height="14" uuid="56c88e04-f8b0-4900-be85-8dfb1032a218"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ENTRE_CALLE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="43" y="234" width="148" height="14" uuid="c6c2a8fd-4d89-49b8-9c74-7cb3cedcdc0f"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Y LA CALLE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="191" y="234" width="251" height="14" uuid="126afe21-c75c-4cac-914f-75da39731f2c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{YLA_CALLE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="43" y="248" width="148" height="14" uuid="87ae3f1e-a5d6-4512-b453-228358d5eb55"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[TELEFONO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="191" y="248" width="251" height="14" uuid="81e1da49-5a2d-4783-8a94-1463968b91fa"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TELEFONO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="43" y="262" width="148" height="14" uuid="0b4070ab-5fbb-4f67-aff2-8f105912865c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[ENTIDAD]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="191" y="262" width="251" height="14" uuid="a7a5e11e-4687-4328-a7d3-0305f05c9eb2"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ESTADO_PAIS}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="43" y="276" width="148" height="14" uuid="4dbd7921-5a7b-41a8-a8b5-93b837573490"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[MUNICIPIO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="191" y="276" width="251" height="14" uuid="1b2320f2-733b-4c65-b944-c8d252eb8251"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MUNICIPIO_PAIS}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="43" y="290" width="148" height="14" uuid="10478d4b-9788-4734-94c9-fbafed6d0df3"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[CODIGO POSTAL]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="191" y="290" width="251" height="14" uuid="54ceea2c-49b7-4de8-8937-c1ae16985e7a"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Century Gothic"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODIGO_POSTAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="43" y="6" width="84" height="20" uuid="70a577cf-46b1-4d68-ba03-a89c0a6cbd8f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARENTESCO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="128" y="6" width="314" height="20" uuid="6052ed84-1b2c-4ac6-859c-8e0ac92aeba3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PARENTESCO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

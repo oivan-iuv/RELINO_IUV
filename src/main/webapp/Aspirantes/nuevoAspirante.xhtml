@@ -1,0 +1,552 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" 
+                template="/layouts/layoutElementos.xhtml">
+
+    <ui:define name="head">
+        <title>SECRETARÍA DE SEGURIDAD CIUDADANA - INICIO DE SESIÓN</title>          
+    </ui:define>
+    <ui:define name="workPage">
+        <div class="card">
+            <div class="card-header fw-bold">
+                REGISTRAR ASPIRANTE
+            </div>
+            <div class="card-body">       
+                <h:form id="idFrmNuevoAspirante">
+                    <p:growl id="idGrowlAsp" showSummary="false" showDetail="true" life="4000" /> 
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active text-uppercase" id="nav-datosPersonales-tab" data-bs-toggle="tab" data-bs-target="#nav-datosPersonales" type="button" role="tab" aria-controls="nav-datosPersonales" aria-selected="true"><i class="fad fa-address-card"></i>&nbsp;Datos Personales del Aspirante</button>
+                            <button class="nav-link text-uppercase" id="nav-domicilioActual-tab" data-bs-toggle="tab" data-bs-target="#nav-domicilioActual" type="button" role="tab" aria-controls="nav-domicilioActual" aria-selected="false"><i class="fad fa-map-marker-alt"></i>&nbsp;Domicilio Actual</button>
+                            <button class="nav-link text-uppercase" id="nav-datosPlantel-tab" data-bs-toggle="tab" data-bs-target="#nav-datosPlantel" type="button" role="tab" aria-controls="nav-datosPlantel" aria-selected="false"><i class="fad fa-building"></i>&nbsp;Datos del Plantel</button>
+                            <button class="nav-link text-uppercase" id="nav-datosReferencias-tab" data-bs-toggle="tab" data-bs-target="#nav-datosReferencias" type="button" role="tab" aria-controls="nav-datosReferencias" aria-selected="false"><i class="fad fa-house-return"></i>&nbsp;Datos de Referencias</button>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-datosPersonales" role="tabpanel" aria-labelledby="nav-datosPersonales-tab">
+                            <p:panel class="sinPadding" id="id_datosPersonales">
+                                <p:panel id="pgrDato" class="sin-border">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-12 col-sm-12 mt-5">
+                                            <p:panel id="pnlImage">
+                                                <div class="avatar-container">
+                                                    <p:graphicImage id="idImagenDefault"
+                                                                    class="avatar-img" 
+                                                                    cache="false"  
+                                                                    url="/resources/images/userMalee.png" 
+                                                                    rendered="#{request.session.getAttribute('imagenBytes')==null?true:false}"/>
+
+                                                    <p:graphicImage id="idImagen" 
+                                                                    class="avatar-img"                                                                     
+                                                                    cache="false"  
+                                                                    value="/imagen.jpg"
+                                                                    rendered="#{not empty request.session.getAttribute('imagenBytes')}"/>
+                                                    <br/>
+                                                    <p:commandButton id="buttCerrarDlgImage" 
+                                                                     class="text-uppercase avatar-btn"  
+                                                                     icon="fad fa-cloud-upload" 
+                                                                     value="Subir Imagen" 
+                                                                     process="@this" onclick="PF('wgvSubeImagen').show();"/>  
+                                                </div>
+                                            </p:panel>
+                                        </div>
+                                        <div class="col-lg-9 col-md-12 col-sm-12">
+                                            <div class="row text-uppercase mt-4">
+                                                <div class="col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                    <h:outputLabel value="*Nombre: "/>
+                                                    <p:inputText class="form-control" id="new_asp_nombre" label="new_asp_nombre" value="#{aspirantesController.selected.nombre}" 
+                                                                 onblur="this.value = this.value.toUpperCase();" required="true" requiredMessage="POR FAVOR ESCRIBE NOMBRE" 
+                                                                 validatorMessage="NO SE PERMITEN CARACTERES ESPECIALES NI ACENTOS EN EL NOMBRE" placeholder="ESCRIBE AQUÍ …">
+                                                        <f:validateRegex pattern="[A-Za-zÑñ+][\s[A-Za-zÑñ]+]*"/>
+                                                    </p:inputText>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                    <h:outputLabel value="*Apellido Paterno: "/>
+                                                    <p:inputText class="form-control" id="new_asp_apaterno" label="new_asp_apaterno" value="#{aspirantesController.selected.apaterno}" 
+                                                                 onblur="this.value = this.value.toUpperCase();" required="true" requiredMessage="POR FAVOR ESCRIBE APELLIDO PATERNO" 
+                                                                 validatorMessage="NO SE PERMITEN CARACTERES ESPECIALES NI ACENTOS EN EL APELLIDO PATERNO" placeholder="ESCRIBE AQUÍ …">
+                                                        <f:validateRegex pattern="[A-Za-zÑñ+][\s[A-Za-zÑñ]+]*"/>
+                                                    </p:inputText>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                    <h:outputLabel value="*Apellido Materno: "/>
+                                                    <p:inputText  class="form-control" id="new_asp_amaterno" label="new_asp_amaterno" value="#{aspirantesController.selected.amaterno}" 
+                                                                  onblur="this.value = this.value.toUpperCase();" required="true" requiredMessage="POR FAVOR ESCRIBE APELLIDO MATERNO" 
+                                                                  validatorMessage="NO SE PERMITEN CARACTERES ESPECIALES NI ACENTOS EN EL APELLIDO MATERNO" placeholder="ESCRIBE AQUÍ …">                    
+                                                        <f:validateRegex pattern="[A-Za-zÑñ+][\s[A-Za-zÑñ]+]*"/>
+                                                    </p:inputText>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                    <h:outputLabel value="Genero: " />
+                                                    <p:selectOneMenu class="mxw-100" id="cat_genero"
+                                                                     value="#{aspirantesController.selected.idSexo}" filter="true" filterMatchMode="contains" 
+                                                                     required="true" requiredMessage="POR FAVOR SELECCIONA GENERO" >
+                                                        <p:ajax event="change"  process="@this cat_genero" update="new_asp_noCartilla"/>    
+                                                        <f:selectItem  itemValue="#{null}" itemLabel="-- SELECCIONAR  --" noSelectionOption="true" />
+                                                        <f:selectItems value="#{catGeneroController.itemsAvailableSelectOneOrderBy}"/>
+                                                    </p:selectOneMenu>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                    <h:outputLabel value="*Estado Civil: " />
+                                                    <p:selectOneMenu class="mxw-100
+                                                                     " id="cat_edoCivil"
+                                                                     value="#{aspirantesController.selected.idEstadoCivil}" filter="true" filterMatchMode="contains" 
+                                                                     required="true" requiredMessage="POR FAVOR SELECCIONA ESTADO CIVIL" >
+                                                        <f:selectItem  itemValue="#{null}" itemLabel="- SELECCIONE ESTADO CIVIL -" noSelectionOption="true" />
+                                                        <f:selectItems value="#{catEstadoCivilController.itemsAvailableSelectOneOrderBy}"/>
+                                                    </p:selectOneMenu> 
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                    <h:outputLabel value="*Fecha de Nacimiento: "/>                                             
+                                                    <p:datePicker id="new_asp_fNacimiento" value="#{aspirantesController.selected.fecNacimiento}" 
+                                                                  yearRange="#{aspirantesController.fechaMinima}:#{aspirantesController.fechaMaxima}" 
+                                                                  monthNavigator="true" yearNavigator="true" locale="es" pattern="dd/MM/yyyy"
+                                                                  required="false" requiredMessage="POR INGRESA LA FECHA DE NACIMIENTO"
+                                                                  title="Se deberá indicar la fecha de nacimiento de la persona bajo el formato “dd/mm/aaaa”" 
+                                                                  class="w-100" inputStyleClass="w-100" placeholder="SELECCIONA UNA FECHA"/>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                    <h:outputLabel value="*Entidad de Nacimiento: "/>
+                                                    <p:selectOneMenu class="mxw-100" id="cat_entidad" value="#{aspirantesController.selected.idEntidadNacimiento}" filter="true" filterMatchMode="contains" 
+                                                                     required="true" requiredMessage="POR FAVOR SELECCIONA ENTIDAD FEDERATIVA" >
+                                                        <p:ajax event="change"  process="@this" update="cat_municipio"
+                                                                listener="#{catMunicipioPaisController.buscaMunibyEntidadNac}" />    
+                                                        <f:selectItem  itemValue="#{null}" itemLabel="-- SELECCIONAR --" noSelectionOption="true" />
+                                                        <f:selectItems value="#{catEstadosPaisController.itemsAvailableSelectOneOrderBy}"/>
+                                                    </p:selectOneMenu>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                    <h:outputLabel value="*Municipio de Nacimiento: "/>
+                                                    <p:selectOneMenu class="mxw-100" id="cat_municipio" style="width: 186px;"
+                                                                     value="#{aspirantesController.selected.idMunicipioNacimiento}" filter="true" filterMatchMode="contains" 
+                                                                     required="true" requiredMessage="POR FAVOR SELECCIONA MUNICIPIO" >
+                                                        <f:selectItem  itemValue="#{null}" itemLabel="-- SELECCIONAR --" noSelectionOption="true" />
+                                                        <f:selectItems value="#{catMunicipioPaisController.itemsMuniNacListAjxSelectManyCats}"/>
+                                                    </p:selectOneMenu>  
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                    <h:outputLabel value="*R.F.C.: "/>
+                                                    <p:inputText class="form-control" id="new_asp_rfc" label="new_asp_rfc" value="#{aspirantesController.selected.rfc}" 
+                                                                 onblur="this.value = this.value.toUpperCase();" title="Se refiere al  Registro Federal de Contribuyentes"
+                                                                 required="true" requiredMessage="POR FAVOR ESCRIBE R.F.C." placeholder="ESCRIBE AQUÍ …" >
+                                                        <p:ajax event="blur" update="idExisteAsp"  process="@this idFrmNuevoAspirante:new_asp_rfc" 
+                                                                listener="#{aspirantesController.verificaExistAspirante(1)}" />                                
+                                                    </p:inputText> 
+                                                    <p:watermark for="new_asp_rfc" value="AAAA-123456" /> 
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                    <h:outputLabel value="*C.U.R.P.: "/>
+                                                    <p:inputText class="form-control" id="new_asp_curp" label="new_asp_curp" value="#{aspirantesController.selected.curp}" 
+                                                                 onblur="this.value = this.value.toUpperCase();" title="Es la Clave Única de Registro de Población."
+                                                                 required="true" requiredMessage="POR FAVOR ESCRIBE C.U.R.P." 
+                                                                 validatorMessage="CURP invalida, no cumple con el formato correcto, NO OLVIDE COLOCAR EL ULTIMO DIGITO" placeholder="ESCRIBE AQUÍ …">
+                                                        <p:ajax event="blur" update="idExisteAsp"  process="@this idFrmNuevoAspirante:new_asp_curp" 
+                                                                listener="#{aspirantesController.verificaExistAspirante(2)}"/>                                
+                                                        <f:validateRegex pattern="([A-Z]{4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM](AS|BC|BS|CC|CL|CM|CS|CH|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)[A-Z]{3}[0-9A-Z]\d)"/>
+                                                    </p:inputText>
+                                                    <p:watermark for="new_asp_curp" value="AAAA-123456-AAAAAA-AA" />  
+                                                </div>   
+                                                <div class="col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                    <h:outputLabel value="*Escolaridad: "/>
+                                                    <p:selectOneMenu class="mxw-100" id="cat_escolaridad" 
+                                                                     value="#{aspirantesController.selected.idEscolaridad}" filter="true" filterMatchMode="contains" 
+                                                                     required="true" requiredMessage="POR FAVOR SELECCIONA ESCOLARIDAD" >
+                                                        <f:selectItem  itemValue="#{null}" itemLabel="-- SELECCIONAR --" noSelectionOption="true" />
+                                                        <f:selectItems value="#{catEscolaridadController.itemsAvailableSelectOneOrderBy}"/>
+                                                    </p:selectOneMenu>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                    <h:outputLabel value="*Número de Cartilla Militar: "/>
+                                                    <p:inputText class="form-control" id="new_asp_noCartilla" label="new_asp_noCartilla" 
+                                                                 disabled="#{aspirantesController.selected.idSexo.idGenero==1?false:true}"
+                                                                 value="#{aspirantesController.selected.noCartilla}" onblur="this.value = this.value.toUpperCase();" 
+                                                                 required="true" requiredMessage="POR FAVOR ESCRIBE EL NUMERO DE CARTILLA MILITAR" placeholder="ESCRIBE AQUÍ …"/>
+                                                </div>
+                                            </div>
+                                            <p:outputLabel value=""/>
+                                        </div>                      
+                                    </div>
+                                </p:panel>
+                                <hr class="mt-3 mb-3"/>
+                                <div class="row mt-3">
+                                    <div class="col-lg-6 col-md-12 col-sm-12">
+                                        <p class="text-left text-uppercase"><b>NOTA:</b> Los campos marcados con * son obligatorios, verificar cada una de las pestañas  </p>
+                                    </div>
+                                </div>
+                            </p:panel>
+
+                        </div>
+                        <div class="tab-pane fade" id="nav-domicilioActual" role="tabpanel" aria-labelledby="nav-domicilioActual-tab">
+                            <p:panel  class="sin-border sinPadding"  id="id_Domicilio">               
+                                <div class="row text-uppercase p-3">
+                                    <div class="col-lg-8 col-md-12 col-sm-12 mb-2">
+                                        <h:outputLabel value="*Calle: "/>
+                                        <p:inputText class="form-control" id="new_asp_calle" label="new_asp_calle" 
+                                                     value="#{aspirantesController.selectedDomicilio.calle}" onblur="this.value = this.value.toUpperCase();" required="true" 
+                                                     requiredMessage="POR FAVOR ESCRIBE LA CALLE" placeholder="ESCRIBE AQUÍ …"/>                       
+                                    </div>
+                                    <div class="col-lg-2 col-md-12 col-sm-12 mb-2">
+                                        <h:outputLabel value="*Número Interior: "/>
+                                        <p:inputText class="form-control" id="new_asp_noInterior" label="new_asp_noInterior" 
+                                                     value="#{aspirantesController.selectedDomicilio.noInterior}" onblur="this.value = this.value.toUpperCase();" required="true" 
+                                                     requiredMessage="POR FAVOR ESCRIBE EL NUMERO INTERIOR" placeholder="ESCRIBE AQUÍ …"/>
+                                    </div>
+                                    <div class="col-lg-2 col-md-12 col-sm-12 mb-2">
+                                        <h:outputLabel value="*Número Exterior: "/>
+                                        <p:inputText class="form-control" id="new_asp_noExterior" label="new_asp_noExterior"
+                                                     value="#{aspirantesController.selectedDomicilio.noExterior}" onblur="this.value = this.value.toUpperCase();" 
+                                                     required="true" requiredMessage="POR FAVOR ESCRIBE EL NUMERO EXTERIOR" placeholder="ESCRIBE AQUÍ …"/>
+                                    </div>
+                                    <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
+                                        <h:outputLabel value="*Entre la Calle: "/>
+                                        <p:inputText class="form-control" id="new_asp_entreCalle" label="new_asp_entreCalle" 
+                                                     value="#{aspirantesController.selectedDomicilio.entreCalle}" onblur="this.value = this.value.toUpperCase();" 
+                                                     required="true" requiredMessage="POR FAVOR ESCRIBE ENTRE QUE CALLE" placeholder="ESCRIBE AQUÍ …"/>
+                                    </div>
+                                    <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
+                                        <h:outputLabel value="*Y la Calle: "/>
+                                        <p:inputText class="form-control" id="new_asp_ylaCalle" label="new_asp_ylaCalle" 
+                                                     value="#{aspirantesController.selectedDomicilio.ylaCalle}" onblur="this.value = this.value.toUpperCase();" 
+                                                     required="true" requiredMessage="POR FAVOR ESCRIBE ENTRE QUE OTRA CALLE" placeholder="ESCRIBE AQUÍ …"/>
+                                    </div>                                  
+                                    <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
+                                        <h:outputLabel value="*Entidad: "/>
+                                        <p:selectOneMenu class="mxw-100" id="cat_entidad_dom" style="width: 186px;"
+                                                         value="#{aspirantesController.selectedDomicilio.idEntidad}" filter="true" filterMatchMode="contains" 
+                                                         required="true" requiredMessage="POR FAVOR SELECCIONA ENTIDAD FEDERATIVA" >
+                                            <p:ajax event="change"  process="@this" update="cat_municipio_dom"
+                                                    listener="#{catMunicipioPaisController.buscaMunibyEntidadDom}"/> 
+                                            <p:ajax event="change"  process="@this" update="cat_colonia_dom new_asp_cp"
+                                                    listener="#{aspirantesController.limpiaCP_Pais(1)}"/>        
+                                            <f:selectItem  itemValue="#{null}" itemLabel="-- SELECCIONAR --" noSelectionOption="true" />
+                                            <f:selectItems value="#{catEstadosPaisController.itemsAvailableSelectOneOrderByDom}"/>
+                                        </p:selectOneMenu>
+                                    </div>
+                                    <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
+                                        <h:outputLabel value="*Municipio: "/>
+                                        <p:selectOneMenu class="mxw-100" id="cat_municipio_dom" style="width: 186px;"
+                                                         value="#{aspirantesController.selectedDomicilio.idMunicipio}" filter="true" filterMatchMode="contains" 
+                                                         required="true" requiredMessage="POR FAVOR SELECCIONA MUNICIPIO" >
+                                            <p:ajax event="change"  process="@this" update="cat_colonia_dom"
+                                                    listener="#{aspirantesController.limpiaCP_Pais(1)}" />                            
+                                            <p:ajax event="change"  process="@this" update="cat_colonia_dom new_asp_cp"
+                                                    listener="#{catColoniasPaisController.buscaColoniabyMuniDom}"/>        
+                                            <f:selectItem  itemValue="#{null}" itemLabel="-- SELECCIONAR --" noSelectionOption="true" />
+                                            <f:selectItems value="#{catMunicipioPaisController.itemsMuniListAjxSelectManyCatsDom}"/>
+                                        </p:selectOneMenu>
+                                    </div>
+                                    <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
+                                        <h:outputLabel value="*Colonia: "/>
+                                        <p:selectOneMenu class="mxw-100" id="cat_colonia_dom" style="width: 186px;"
+                                                         value="#{aspirantesController.selectedDomicilio.idColonia}" filter="true" filterMatchMode="contains" 
+                                                         required="true" requiredMessage="POR FAVOR SELECCIONA MUNICIPIO" >
+                                            <p:ajax event="change"  process="@this cat_colonia_dom" update="new_asp_cp"
+                                                    listener="#{aspirantesController.asignaCP(1)}" />
+                                            <f:selectItem  itemValue="#{null}" itemLabel="-- SELECCIONAR --" noSelectionOption="true" />
+                                            <f:selectItems value="#{catColoniasPaisController.itemsColoniaListAjxSelectManyCatsDom}"/>
+                                        </p:selectOneMenu>
+                                    </div>                          
+                                    <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
+                                        <h:outputLabel value="*Codigo Postal: "/>
+                                        <p:inputText class="form-control" id="new_asp_cp" label="new_asp_cp" value="#{aspirantesController.selectedDomicilio.codigoPostal}" 
+                                                     onblur="this.value = this.value.toUpperCase();" required="true" 
+                                                     requiredMessage="POR FAVOR ESCRIBE CODIGO POSTAL" placeholder="ESCRIBE AQUÍ …"/>
+                                    </div>                                    
+                                    <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
+                                        <h:outputLabel value="*Teléfono: "/>
+                                        <p:inputMask class="form-control" mask="(999) 999-9999[ x99999]" id="new_asp_telefono" label="new_asp_telefono"
+                                                     value="#{aspirantesController.selectedDomicilio.telefono}" onblur="this.value = this.value.toUpperCase();" 
+                                                     required="true" requiredMessage="POR FAVOR ESCRIBE TELEFONO" placeholder="ESCRIBE AQUÍ …"/>
+                                    </div>
+                                </div>
+                            </p:panel>
+                            <hr class="mt-3 mb-3"/>
+                            <div class="row mt-3">
+                                <div class="col-lg-6 col-md-12 col-sm-12">
+                                    <p class="text-left text-uppercase"><b>NOTA:</b> Los campos marcados con * son obligatorios, verificar cada una de las pestañas  </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-datosPlantel" role="tabpanel" aria-labelledby="nav-datosPlantel-tab">
+                            <p:panel  class="sin-border sinPadding" id="id_Plantel">
+                                <div class="row text-uppercase p-3">
+                                    <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
+                                        <h:outputLabel value="Dependencia Responsable: "/>
+                                        <p:inputText class="form-control" id="new_asp_plantel" label="new_asp_plantel" 
+                                                     value="#{aspirantesController.selectedPlantel.dependenciaResponsable}" 
+                                                     onblur="this.value = this.value.toUpperCase();"  placeholder="ESCRIBE AQUÍ …"/>   
+                                    </div>
+                                    <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
+                                        <h:outputLabel value="Institución Capacitadora: "/>
+                                        <p:inputText class="form-control" id="new_asp_institucion" label="new_asp_institucion" 
+                                                     value="#{aspirantesController.selectedPlantel.institucionCapacitadora}" 
+                                                     onblur="this.value = this.value.toUpperCase();"  placeholder="ESCRIBE AQUÍ …"/>  
+                                    </div>
+                                    <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
+                                        <h:outputLabel value="Nombre del Curso: "/>
+                                        <p:inputText class="form-control" id="new_asp_curso" label="new_asp_curso" 
+                                                     value="#{aspirantesController.selectedPlantel.curso}" 
+                                                     onblur="this.value = this.value.toUpperCase();"  placeholder="ESCRIBE AQUÍ …"/>
+                                    </div>
+                                    <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
+                                        <h:outputLabel value="Nivel del Curso: "/>
+                                        <p:selectOneMenu class="mxw-100" id="cat_nivel_curso" style="width: 186px;"
+                                                         value="#{aspirantesController.selectedPlantel.idNivelCurso}" filter="true" filterMatchMode="contains">
+                                            <f:selectItem  itemValue="#{null}" itemLabel="-- SELECCIONAR --" noSelectionOption="true" />
+                                            <f:selectItems value="#{catNivelCursoController.itemsAvailableSelectMany}"/>
+                                        </p:selectOneMenu>
+                                    </div>
+                                    <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
+                                        <h:outputLabel value="Eficiencia Terminal: "/>
+                                        <p:selectOneMenu class="mxw-100" id="cat_eficiencia_terminal" style="width: 186px;"
+                                                         value="#{aspirantesController.selectedPlantel.idEficiencia}" filter="true" filterMatchMode="contains">
+                                            <f:selectItem  itemValue="#{null}" itemLabel="-- SELECCIONAR --" noSelectionOption="true"/>
+                                            <f:selectItems value="#{catEficienciaController.itemsAvailableSelectMany}"/>
+                                        </p:selectOneMenu>
+                                    </div>
+                                    <div class="col-lg-2 col-md-12 col-sm-12 mb-2">
+                                        <h:outputLabel value="*Fecha de Inicio: "/>
+                                        <p:datePicker id="new_asp_fInicio" value="#{aspirantesController.selectedPlantel.fechaInicio}" 
+                                                      class="w-100" inputStyleClass="w-100" yearRange="#{aspirantesController.fechaMinima}:#{aspirantesController.fechaMaxima}"
+                                                      monthNavigator="true" yearNavigator="true" locale="es" pattern="dd/MM/yyyy"
+                                                      required="true" requiredMessage="POR INGRESA LA FECHA DE NACIMIENTO" placeholder="DD/MM/AAAA"
+                                                      title="Se deberá indicar la fecha de nacimiento de la persona bajo el formato “dd/mm/aaaa”">
+                                            <p:ajax event="blur"  process="@this new_asp_fInicio" update="new_asp_fFin"/>
+                                        </p:datePicker> 
+                                    </div>
+                                    <div class="col-lg-2 col-md-12 col-sm-12 mb-2">
+                                        <h:outputLabel value="*Fecha de Fin: "/>
+                                        <p:datePicker id="new_asp_fFin" value="#{aspirantesController.selectedPlantel.fechaFin}" 
+                                                      class="w-100" inputStyleClass="w-100" mindate="#{aspirantesController.selectedPlantel.fechaInicio}"
+                                                      monthNavigator="true" yearNavigator="true" locale="es" pattern="dd/MM/yyyy" placeholder="DD/MM/AAAA"
+                                                      required="true" requiredMessage="POR INGRESA LA FECHA DE NACIMIENTO"
+                                                      title="Se deberá indicar la fecha de nacimiento de la persona bajo el formato “dd/mm/aaaa”"/> 
+                                    </div>
+                                </div>
+                            </p:panel>     
+                            <hr class="mt-3 mb-3"/>
+                            <div class="row mt-3">
+                                <div class="col-lg-6 col-md-12 col-sm-12">
+                                    <p class="text-left text-uppercase"><b>NOTA:</b> Los campos marcados con * son obligatorios, verificar cada una de las pestañas  </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-datosReferencias" role="tabpanel" aria-labelledby="nav-datosReferencias-tab">
+
+                            <p:panel  class="sin-border sinPadding text-uppercase" id="id_Referencias">
+                                <div class="p-3">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 ">
+                                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
+                                            <p:commandButton icon="fad fa-plus-circle" value="REGISTRAR" oncomplete="PF('dlgRegistrarReferencia').show();" />
+                                        </div> 
+                                        <p:dataTable binding="#{table}"  id="ListReferencias" value="#{aspirantesController.listReferencias}"  
+                                                     var="referencias" emptyMessage="NO SE ENCONTRARON RESULTADOS" reflow="true" style="visibility: inherit!important;">                                   
+                                            <p:column headerText="No.">
+                                                <h:outputText value="#{table.rowIndex+1}"/>
+                                            </p:column>                        
+                                            <p:column headerText="Nombre">
+                                                <h:outputText value="#{referencias.nombre}"/>
+                                            </p:column>
+                                            <p:column headerText="Paterno">
+                                                <h:outputText value="#{referencias.apaterno}"/>
+                                            </p:column>
+                                            <p:column headerText="Materno">
+                                                <h:outputText value="#{referencias.amaterno}"/>
+                                            </p:column>
+                                            <p:column headerText="Parentesco">
+                                                <h:outputText value="#{referencias.parentesco}"/>
+                                            </p:column>
+                                            <p:column headerText="ACCIONES">
+                                                <p:commandButton id="buttRemoveRef"
+                                                                 class="ui-button-danger text-uppercase"  
+                                                                 label="Quitar Referencia"                                                                   icon="fad fa-trash-alt" action="#{aspirantesController.eliminaReferencia()}" 
+                                                                 process="@this" update="idFrmNuevoAspirante:id_Referencias">
+                                                    <f:setPropertyActionListener value="#{table.rowIndex}" target="#{aspirantesController.rowIndexSelected}"/>  
+                                                </p:commandButton>
+                                                <p:tooltip for="buttRemoveRef" value="ELIMINAR REFERENCIA" position="top"/>
+                                            </p:column>
+                                        </p:dataTable>      
+                                    </div>
+                                </div>
+                            </p:panel>
+                            <hr class="mt-3 mb-3"/>
+                            <div class="row mt-3">
+                                <div class="col-lg-6 col-md-12 col-sm-12">
+                                    <p class="text-left text-uppercase"><b>NOTA:</b> Los campos marcados con * son obligatorios, verificar cada una de las pestañas  </p>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-sm-12">
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                        <p:commandButton  class="mt-3 text-uppercase ui-button-save" id="buttGuardaAsp" icon="fad fa-check-circle" value="Guardar Aspirante" 
+                                                          process="@this id_datosPersonales id_Domicilio id_Plantel"
+                                                          onclick="PF('wdgLoading').show();"
+                                                          action="#{aspirantesController.guardaAspDep()}" 
+                                                          oncomplete="PF('wdgLoading').hide(); generaCedulaAspirante(xhr, status, args)"
+                                                          update="idFrmNuevoAspirante idGrowlAsp dlgSugiereCurp"/>
+                                    </div>
+                                </div> 
+                                <!--<p:commandButton id="buttPDF" style="font-size: 1.0em" icon="ui-icon-disk" value="Genera PDF" 
+                                        process="@this"
+                                        onclick="PF('wdgLoading').show();"
+                                        action="#{aspirantesController.createPdf()}" 
+                                        oncomplete="PF('wdgLoading').hide(); PF('wgvShowPdf').show();"
+                                        update="idFrmNuevoAspirante idGrowlAsp dlgSugiereCurp"/>-->
+                            </div>
+                        </div>                     
+                    </div>
+                </h:form>
+                <ui:include src="parcialesAspirantes/referenciasAspirante.xhtml"/>                          
+            </div>
+        </div>
+
+        <p:dialog modal="true" position="top" dynamic="true" width="70%" widgetVar="wgvShowPdf" appendTo="@(body)" header="CEDULA DE ASPIRANTE" 
+                  draggable="true" closable="true" resizable="false">  
+            <h:form id="form_pdf_soli">
+                <p:media value="/report.pdf" zoom="100%" player="pdf" width="100%" height="700px">
+
+                </p:media>
+            </h:form>
+        </p:dialog>
+
+        <p:dialog class="text-uppercase bg-modal modalResponsivo" id="idSubeImagen" widgetVar="wgvSubeImagen" header="Subir Imagen"
+                  resizable="false" width="30%" draggable="false" modal="true" appendTo="@(body)" closeOnEscape="false" responsive="true" closable="true">
+            <h:form id="idFrmIMage">
+                <p:scrollPanel class="scrollDialog" mode="native"> 
+                    <p:fileUpload class="fUpload" id="fileUpAspirante" 
+                                  listener="#{aspirantesController.subirImagenResize}"  mode="advanced" dragDropSupport="false"
+                                  process="@this fileUpAspirante" label="Examinar" uploadLabel="Subir" cancelLabel="Cancelar" 
+                                  allowTypes="/(\.|\/)(jpe?g|png|JPE?G|PNG)$/"
+                                  update="listImages"/>   
+                    <p:dataTable binding="#{listIMages}" paginator="false" rows="5" paginatorPosition="bottom"
+                                 id="listImages" value="#{aspirantesController.listFotografias}"  
+                                 var="images" emptyMessage="NO SE ENCONTRARON RESULTADOS">
+                        <p:column headerText="No." style="width:5%" class="d-none">
+                            <f:facet name="header"><h:outputText value="No."/></f:facet>                                    
+                            <h:outputText value="#{listIMages.rowIndex+1}"/>
+                        </p:column>
+                        <p:column headerText="Nombre" class="w-100">                                                      
+                            <h:outputText value="#{images.titulo}"/>
+                        </p:column>
+                        <p:column headerText="Tipo" class="d-none">
+                            <f:facet name="header"><h:outputText value="Tipo"/></f:facet>                                    
+                            <h:outputText value="#{images.tipoArchivo}"/>
+                        </p:column>                
+                        <p:column headerText="Extension" class="d-none">
+                            <f:facet name="header"><h:outputText value="Extension"/></f:facet>                                    
+                            <h:outputText value="#{images.extensionArchivo}"/>
+                        </p:column>                                
+                    </p:dataTable>
+                    <br/>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <p:commandButton id="buttCerrarDlgImage" icon="fad fa-save" value="GUARDAR" 
+                                         update="idFrmNuevoAspirante:pnlImage"
+                                         oncomplete="PF('wgvSubeImagen').hide();">
+                        </p:commandButton>       
+                    </div>
+                </p:scrollPanel>
+            </h:form>
+        </p:dialog>
+
+        <p:dialog id="dlgSugiereCurp" header="CURP Calculada por el sistema" 
+                  widgetVar="wgbSugiereCurp" resizable="false" width="60%"  
+                  showEffect="fade" hideEffect="explode"
+                  draggable="false" modal="true" appendTo="@(body)"
+                  closeOnEscape="true" responsive="true" closable="true">
+            <h:form id="frmDlgSugiereCurp">
+                <p:focus context="idCurpSugerida"/>
+                <br/><br/>
+                <p:outputLabel value="#{aspirantesController.mensaje}"/>
+                <br/><br/>                
+                <p:outputLabel style="font-size: medium; font-weight: 900" 
+                               value="La CURP ingresada, no cumple con el fomato correcto, puede deberse a lo siguiente"/>
+                <ul>
+                    <li>Revisa si los datos personales son correctos</li>
+                    <li>Revisa si la CURP ingresada es correcta</li>
+                    <li>Se sugiere el uso de la siguiente CURP: <font style="font-size: xx-large;" color="red">UNICAMENTE COMPLETE EL UTIMO DIGITO YA QUE ESTE ES GENERADO POR LA RENAPO</font></li>
+                </ul>                               
+                <br/><br/>
+                <center>
+                    <p:outputLabel value="Usted Ingresó:"/>
+                    <p:inputText  style="font-size: medium; font-weight: 900" 
+                                  value="#{aspirantesController.selected.curp}"/>                                   
+                    <p:spacer width="25px"/>
+                    <p:outputLabel value="Se sugiere:"/>
+                    <p:inputText id="idCurpSugerida"  style="font-size: medium; color: #cd0a0a; font-weight: 900" 
+                                 value="#{aspirantesController.micurp}"/>
+                </center>
+                <br/>
+                <center>
+                    <p:commandButton id="buttAceptaCurp" style="font-size: 1.0em" icon="ui-icon-disk" value="Aceptar sugerencia" 
+                                     process="@this @form"
+                                     oncomplete="PF('wgbSugiereCurp').hide();"
+                                     update="idFrmNuevoAspirante:new_asp_curp">
+                        <f:setPropertyActionListener value="#{aspirantesController.micurp}" 
+                                                     target="#{aspirantesController.selected.curp}"/>
+                    </p:commandButton>
+                </center>
+            </h:form>
+        </p:dialog>
+
+        <p:dialog id="idExisteAsp" widgetVar="wgbExisteAsp" header="#{aspirantesController.mensaje}"
+                  resizable="false" width="90%"
+                  draggable="false" modal="true" appendTo="@(body)"
+                  closeOnEscape="true" responsive="true" closable="false">
+            <h:form id="idFrmExisteAsp">
+                <br/>
+                <p:dataTable binding="#{listAspi}" paginator="true" rows="5" paginatorPosition="bottom"
+                             id="listImages" value="#{aspirantesController.listVerificaExist}"  
+                             var="aspirante" emptyMessage="NO SE ENCONTRARON RESULTADOS">
+                    <p:column headerText="No." style="width:5%">
+                        <f:facet name="header"><h:outputText value="No."/></f:facet>                                    
+                        <h:outputText value="#{listAspi.rowIndex+1}"/>
+                    </p:column>
+                    <p:column headerText="Nombre">
+                        <f:facet name="header"><h:outputText value="Nombre"/></f:facet>                                    
+                        <h:outputText value="#{aspirante.nombre}"/>
+                    </p:column>
+                    <p:column headerText="Paterno">
+                        <f:facet name="header"><h:outputText value="Paterno"/></f:facet>                                    
+                        <h:outputText value="#{aspirante.apaterno}"/>
+                    </p:column>                
+                    <p:column headerText="Materno">
+                        <f:facet name="header"><h:outputText value="Materno"/></f:facet>                                    
+                        <h:outputText value="#{aspirante.amaterno}"/>
+                    </p:column>                                
+                    <p:column headerText="RFC">
+                        <f:facet name="header"><h:outputText value="RFC"/></f:facet>                                    
+                        <h:outputText value="#{aspirante.rfc}"/>
+                    </p:column>                    
+                    <p:column headerText="CURP">
+                        <f:facet name="header"><h:outputText value="CURP"/></f:facet>                                    
+                        <h:outputText value="#{aspirante.curp}"/>
+                    </p:column>                                     
+                    <p:column headerText="Dependencia">
+                        <f:facet name="header"><h:outputText value="Dependencia"/></f:facet>                                    
+                        <h:outputText value="#{aspirante.idDependencia.dependencia}"/>
+                    </p:column>                    
+                </p:dataTable>
+                <br/>
+                <center>
+                    <p:commandButton id="buttCerrarExisteAsp" style="font-size: 1.0em" icon="ui-icon-close" value="Cerrar" 
+                                     update="idFrmNuevoAspirante"
+                                     onclick="PF('wgbExisteAsp').hide();">
+                    </p:commandButton>       
+                </center>
+            </h:form>
+        </p:dialog>
+
+
+
+        <script type="text/javascript">
+            function generaCedulaAspirante(xhr, status, args) {
+                if (args.generaCedula) {
+                    PF('wgvShowPdf').show();
+                }
+            }
+        </script>
+    </ui:define>
+
+</ui:composition>

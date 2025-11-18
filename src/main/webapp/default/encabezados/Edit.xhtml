@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEncabezadosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEncabezadosLabel_idEncabezado}" for="idEncabezado" />
+                    <h:inputText id="idEncabezado" value="#{encabezadosController.selected.idEncabezado}" title="#{bundle.EditEncabezadosTitle_idEncabezado}" required="true" requiredMessage="#{bundle.EditEncabezadosRequiredMessage_idEncabezado}"/>
+                    <h:outputLabel value="#{bundle.EditEncabezadosLabel_year}" for="year" />
+                    <h:inputText id="year" value="#{encabezadosController.selected.year}" title="#{bundle.EditEncabezadosTitle_year}" />
+                    <h:outputLabel value="#{bundle.EditEncabezadosLabel_leyenda}" for="leyenda" />
+                    <h:inputText id="leyenda" value="#{encabezadosController.selected.leyenda}" title="#{bundle.EditEncabezadosTitle_leyenda}" />
+                    <h:outputLabel value="#{bundle.EditEncabezadosLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{encabezadosController.selected.descripcion}" title="#{bundle.EditEncabezadosTitle_descripcion}" />
+                    <h:outputLabel value="#{bundle.EditEncabezadosLabel_logotipo}" for="logotipo" />
+                    <h:inputTextarea rows="4" cols="30" id="logotipo" value="#{encabezadosController.selected.logotipo}" title="#{bundle.EditEncabezadosTitle_logotipo}" />
+                    <h:outputLabel value="#{bundle.EditEncabezadosLabel_institución}" for="institución" />
+                    <h:inputTextarea rows="4" cols="30" id="institución" value="#{encabezadosController.selected.institución}" title="#{bundle.EditEncabezadosTitle_institución}" />
+                    <h:outputLabel value="#{bundle.EditEncabezadosLabel_pie}" for="pie" />
+                    <h:inputTextarea rows="4" cols="30" id="pie" value="#{encabezadosController.selected.pie}" title="#{bundle.EditEncabezadosTitle_pie}" />
+                </h:panelGrid>
+                <h:commandLink action="#{encabezadosController.update}" value="#{bundle.EditEncabezadosSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEncabezadosViewLink}"/>
+                <br />
+                <h:commandLink action="#{encabezadosController.prepareList}" value="#{bundle.EditEncabezadosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEncabezadosIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

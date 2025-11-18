@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" >
+
+    <p:dialog header="REGISTRAR REFERENCIA." 
+              widgetVar="dlgRegistrarReferencia" 
+              modal="true" 
+              resizable="false"
+              width="800" 
+              height="570" 
+              draggable="false" 
+              closable="true" 
+              blockScroll="true">
+
+        <h:form id="idFrmReferencia">
+            <div class="row text-uppercase">
+                <div class="col-lg-6 col-md-12 col-sm-12 mb-2">
+                    <h:outputLabel value="Nombre: "/>
+                    <p:inputText class="form-control" id="new_asp_nombre_ref" label="new_asp_nombre_ref" 
+                                 value="#{aspirantesController.selectedReferencia.nombre}" onblur="this.value = this.value.toUpperCase();"
+                                 required="true" requiredMessage="POR FAVOR ESCRIBE NOMBRE"  placeholder="ESCRIBE AQUÍ …"
+                                 validatorMessage="NO SE PERMITEN CARACTERES ESPECIALES NI ACENTOS EN EL NOMBRE">
+                        <f:validateRegex pattern="[A-Za-zÑñ+][\s[A-Za-zÑñ]+]*"/>
+                    </p:inputText>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 mb-2">
+                    <h:outputLabel value="Apellido Paterno: "/>
+                    <p:inputText class="form-control" id="new_asp_apaterno_ref" label="new_asp_apaterno_ref" 
+                                 value="#{aspirantesController.selectedReferencia.apaterno}" onblur="this.value = this.value.toUpperCase();" 
+                                 required="false" requiredMessage="POR FAVOR ESCRIBE APELLIDO PATERNO" placeholder="ESCRIBE AQUÍ …"
+                                 validatorMessage="NO SE PERMITEN CARACTERES ESPECIALES NI ACENTOS EN EL APELLIDO PATERNO">
+                        <f:validateRegex pattern="[A-Za-zÑñ+][\s[A-Za-zÑñ]+]*"/>
+                    </p:inputText> 
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 mb-2">
+                    <h:outputLabel value="Apellido Materno: "/>
+                    <p:inputText class="form-control" id="new_asp_amaterno_ref" label="new_asp_amaterno_ref" 
+                                 value="#{aspirantesController.selectedReferencia.amaterno}" onblur="this.value = this.value.toUpperCase();" 
+                                 required="false" requiredMessage="POR FAVOR ESCRIBE APELLIDO MATERNO" placeholder="ESCRIBE AQUÍ …"
+                                 validatorMessage="NO SE PERMITEN CARACTERES ESPECIALES NI ACENTOS EN EL APELLIDO MATERNO">                    
+                        <f:validateRegex pattern="[A-Za-zÑñ+][\s[A-Za-zÑñ]+]*"/>
+                    </p:inputText> 
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 mb-2">
+                    <h:outputLabel value="Genero: " />
+                    <p:selectOneMenu class="mxw-100" id="cat_genero_ref" style="width: 186px;"
+                                     value="#{aspirantesController.selectedReferencia.idSexo}" filter="true" filterMatchMode="contains" 
+                                     required="true" requiredMessage="POR FAVOR SELECCIONA GENERO" >
+                        <f:selectItem  itemValue="#{null}" itemLabel="-- SELECCIONAR --" noSelectionOption="true" />
+                        <f:selectItems value="#{catGeneroController.itemsAvailableSelectOneOrderBy}"/>
+                    </p:selectOneMenu> 
+                </div>  
+                <div class="col-lg-6 col-md-12 col-sm-12 mb-2">
+                    <h:outputLabel value="Ocupación: "/>
+                    <p:inputText class="form-control" id="new_asp_ocupacion" label="new_asp_ocupacion" 
+                                 value="#{aspirantesController.selectedReferencia.ocupacion}" onblur="this.value = this.value.toUpperCase();" 
+                                 required="true" requiredMessage="POR FAVOR ESCRIBE OCUPACION" placeholder="ESCRIBE AQUÍ …"/>
+                </div>  
+                <div class="col-lg-6 col-md-12 col-sm-12 mb-2">
+
+                    <h:outputLabel value="Parentesco: "/>
+                    <p:inputText class="form-control" id="new_asp_parentesco" label="new_asp_parentesco" 
+                                 value="#{aspirantesController.selectedReferencia.parentesco}" onblur="this.value = this.value.toUpperCase();" 
+                                 required="true" requiredMessage="POR FAVOR ESCRIBE PARENTESCO" placeholder="ESCRIBE AQUÍ …"/>
+                </div>  
+                <div class="col-lg-6 col-md-12 col-sm-12 mb-2">                        
+                    <h:outputLabel value="Calle: "/>
+                    <p:inputText class="form-control" id="new_asp_calle_ref" label="new_asp_calle_ref" 
+                                 value="#{aspirantesController.selectedReferencia.calle}" onblur="this.value = this.value.toUpperCase();" 
+                                 required="true" requiredMessage="POR FAVOR ESCRIBE LA CALLE" placeholder="ESCRIBE AQUÍ …"/>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 mb-2">  
+                    <h:outputLabel value="Número Interior: "/>
+                    <p:inputText class="form-control" id="new_asp_noInterior_ref" label="new_asp_noInterior_ref" 
+                                 value="#{aspirantesController.selectedReferencia.noInterior}" onblur="this.value = this.value.toUpperCase();" 
+                                 required="true" requiredMessage="POR FAVOR ESCRIBE EL NUMERO INTERIOR" placeholder="ESCRIBE AQUÍ …"/>
+                </div>  
+                <div class="col-lg-6 col-md-12 col-sm-12 mb-2"> 
+                    <h:outputLabel value="Número Exterior: "/>
+                    <p:inputText class="form-control" id="new_asp_noExterior_ref" label="new_asp_noExterior_ref" 
+                                 value="#{aspirantesController.selectedReferencia.noExterior}"  onblur="this.value = this.value.toUpperCase();" 
+                                 required="true" requiredMessage="POR FAVOR ESCRIBE EL NUMERO EXTERIOR" placeholder="ESCRIBE AQUÍ …"/>
+                </div>  
+                <div class="col-lg-6 col-md-12 col-sm-12 mb-2"> 
+                    <h:outputLabel value="Entre la Calle: "/>
+                    <p:inputText class="form-control" id="new_asp_entreCalle_ref" label="new_asp_entreCalle_ref" 
+                                 value="#{aspirantesController.selectedReferencia.entreCalle}" onblur="this.value = this.value.toUpperCase();" 
+                                 required="true" requiredMessage="POR FAVOR ESCRIBE ENTRE QUE CALLE" placeholder="ESCRIBE AQUÍ …"/>
+                </div> 
+                <div class="col-lg-6 col-md-12 col-sm-12 mb-2"> 
+                    <h:outputLabel value="Y la Calle: "/>
+                    <p:inputText class="form-control" id="new_asp_ylaCalle_ref" label="new_asp_ylaCalle_ref" 
+                                 value="#{aspirantesController.selectedReferencia.ylaCalle}" onblur="this.value = this.value.toUpperCase();" 
+                                 required="true" requiredMessage="POR FAVOR ESCRIBE ENTRE QUE OTRA CALLE" placeholder="ESCRIBE AQUÍ …"/>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 mb-2"> 
+                    <h:outputLabel value="Teléfono: "/>
+                    <p:inputMask class="form-control" mask="(999) 999-9999" id="new_asp_telefono_ref" label="new_asp_telefono_ref" 
+                                 value="#{aspirantesController.selectedReferencia.telefono}" onblur="this.value = this.value.toUpperCase();" 
+                                 required="true" requiredMessage="POR FAVOR ESCRIBE TELEFONO" placeholder="ESCRIBE AQUÍ …"/>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 mb-2"> 
+                    <h:outputLabel value="Entidad: "/>
+                    <p:selectOneMenu class="mxw-100" id="cat_entidad_ref" style="width: 186px;"
+                                     value="#{aspirantesController.selectedReferencia.idEntidad}" filter="true" filterMatchMode="contains" 
+                                     required="true" requiredMessage="POR FAVOR SELECCIONA ENTIDAD FEDERATIVA" >
+                        <p:ajax event="change"  process="@this" update="cat_municipio_ref"
+                                listener="#{catMunicipioPaisController.buscaMunibyEntidadRef}"/> 
+                        <p:ajax event="change"  process="@this" update="cat_colonia_ref new_cp_ref"
+                                listener="#{aspirantesController.limpiaCP_Pais(2)}"/>        
+                        <f:selectItem  itemValue="#{null}" itemLabel="-- SELECCIONAR --" noSelectionOption="true" />
+                        <f:selectItems value="#{catEstadosPaisController.itemsAvailableSelectOneOrderByRef}"/>
+                    </p:selectOneMenu>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 mb-2">
+                    <h:outputLabel value="Municipio: "/>
+                    <p:selectOneMenu class="mxw-100" id="cat_municipio_ref" style="width: 186px;"
+                                     value="#{aspirantesController.selectedReferencia.idMunicipio}" filter="true" filterMatchMode="contains" 
+                                     required="true" requiredMessage="POR FAVOR SELECCIONA MUNICIPIO" >
+                        <p:ajax event="change"  process="@this" update="cat_colonia_ref"
+                                listener="#{aspirantesController.limpiaCP_Pais(2)}"/>
+                        <p:ajax event="change"  process="@this" update="cat_municipio_ref new_cp_ref"
+                                listener="#{catColoniasPaisController.buscaColoniabyMuniRef}"/>        
+                        <f:selectItem  itemValue="#{null}" itemLabel="-- SELECCIONAR --" noSelectionOption="true" />
+                        <f:selectItems value="#{catMunicipioPaisController.itemsMuniListAjxSelectManyCatsRef}"/>
+                    </p:selectOneMenu>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 mb-2">
+                    <h:outputLabel value="Colonia: "/>
+                    <p:selectOneMenu class="mxw-100" id="cat_colonia_ref" style="width: 186px;"
+                                     value="#{aspirantesController.selectedReferencia.idColonia}" filter="true" filterMatchMode="contains" 
+                                     required="true" requiredMessage="POR FAVOR SELECCIONA MUNICIPIO" >
+                        <p:ajax event="change"  process="@this cat_colonia_ref" update="new_cp_ref"
+                                listener="#{aspirantesController.asignaCP(2)}" />
+                        <f:selectItem  itemValue="#{null}" itemLabel="-- SELECCIONAR --" noSelectionOption="true" />
+                        <f:selectItems value="#{catColoniasPaisController.itemsColoniaListAjxSelectManyCatsRef}"/>
+                    </p:selectOneMenu>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 mb-3">
+                    <h:outputLabel value="Codigo Postal: "/>
+                    <p:inputText class="form-control" id="new_cp_ref" label="new_cp_ref" 
+                                 value="#{aspirantesController.selectedReferencia.codigoPostal}" onblur="this.value = this.value.toUpperCase();" 
+                                 required="true" requiredMessage="POR FAVOR ESCRIBE CODIGO POSTAL" placeholder="ESCRIBE AQUÍ …"/>
+                </div>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
+                <p:commandButton id="buttAddRef" 
+                                 class="text-uppercase"  
+                                 label="Agregar Referencia" icon="fad fa-plus-circle" value="Agregar Referencia" 
+                                 title="#{loginController.bloqueado==true?'TEMPORALMENTE DESACTIVADO HASTA EL DIA 6':'AGREGAR REFERENCIA'}"
+                                 action="#{aspirantesController.agregarReferencia()}" 
+                                 process="@form"
+                                 oncomplete="PF('dlgRegistrarReferencia').hide();"
+                                 update="idFrmNuevoAspirante:id_Referencias idFrmNuevoAspirante:idGrowlAsp, idFrmReferencia"/>
+            </div> 
+        </h:form>
+    </p:dialog>
+</ui:composition>
